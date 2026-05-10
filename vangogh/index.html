@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon carnet culturel - Vincent Van Gogh</title>
+    
+    <!-- Utilisation de Tailwind CSS pour un design moderne et responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Importation de polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Personnalisation des polices */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; /* Fond sombre élégant */
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Animation de la galerie */
+        .gallery-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Délais d'animation pour chaque élément (boucle de 1 à 6) */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col relative overflow-x-hidden selection:bg-pink-500 selection:text-white">
+
+    <!-- Décoration d'arrière-plan (Taches de couleur floues) -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-40"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-30"></div>
+    </div>
+
+    <!-- En-tête -->
+    <header class="pt-16 pb-12 px-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 drop-shadow-sm">
+            Mon carnet culturel
+        </h1>
+        <p class="text-lg md:text-2xl text-gray-300 font-light tracking-[0.2em] uppercase">
+            Vincent Van Gogh
+        </p>
+    </header>
+
+    <!-- Conteneur principal de la galerie -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-20">
+        
+        <!-- Grille CSS : 1 colonne sur mobile, 2 sur tablette, 3 sur PC -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <!-- Élément 1 -->
+            <div class="gallery-item delay-1 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (1).jpg', 'image')">
+                <img src="images (1).jpg" alt="images (1).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (1).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (1).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 2 (Vidéo) -->
+            <div class="gallery-item delay-2 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (2).mp4', 'video')">
+                <video src="images (2).mp4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" muted loop autoplay playsinline></video>
+                <!-- Icône vidéo -->
+                <div class="absolute top-4 right-4 bg-black/60 p-2 rounded-full backdrop-blur-sm">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path></svg>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (2).mp4</span>
+                </div>
+            </div>
+
+            <!-- Élément 3 -->
+            <div class="gallery-item delay-3 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (3).jpg', 'image')">
+                <img src="images (3).jpg" alt="images (3).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (3).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (3).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 4 -->
+            <div class="gallery-item delay-4 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (4).jpg', 'image')">
+                <img src="images (4).jpg" alt="images (4).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (4).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (4).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 5 -->
+            <div class="gallery-item delay-5 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (5).jpg', 'image')">
+                <img src="images (5).jpg" alt="images (5).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (5).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (5).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 6 -->
+            <div class="gallery-item delay-6 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (6).jpg', 'image')">
+                <img src="images (6).jpg" alt="images (6).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (6).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (6).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 7 -->
+            <div class="gallery-item delay-1 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (7).jpg', 'image')">
+                <img src="images (7).jpg" alt="images (7).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (7).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (7).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 8 -->
+            <div class="gallery-item delay-2 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (8).jpg', 'image')">
+                <img src="images (8).jpg" alt="images (8).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (8).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (8).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 09 -->
+            <div class="gallery-item delay-3 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (09).jpg', 'image')">
+                <img src="images (09).jpg" alt="images (09).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (09).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (09).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 10 -->
+            <div class="gallery-item delay-4 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (10).jpg', 'image')">
+                <img src="images (10).jpg" alt="images (10).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (10).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (10).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 11 -->
+            <div class="gallery-item delay-5 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (11).jpg', 'image')">
+                <img src="images (11).jpg" alt="images (11).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (11).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (11).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 13 -->
+            <div class="gallery-item delay-6 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (13).jpg', 'image')">
+                <img src="images (13).jpg" alt="images (13).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (13).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (13).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 14 -->
+            <div class="gallery-item delay-1 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (14).jpg', 'image')">
+                <img src="images (14).jpg" alt="images (14).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (14).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (14).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 15 -->
+            <div class="gallery-item delay-2 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (15).jpg', 'image')">
+                <img src="images (15).jpg" alt="images (15).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (15).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (15).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 16 -->
+            <div class="gallery-item delay-3 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (16).jpg', 'image')">
+                <img src="images (16).jpg" alt="images (16).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (16).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (16).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 17 -->
+            <div class="gallery-item delay-4 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (17).jpg', 'image')">
+                <img src="images (17).jpg" alt="images (17).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (17).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (17).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 18 -->
+            <div class="gallery-item delay-5 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (18).jpg', 'image')">
+                <img src="images (18).jpg" alt="images (18).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (18).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (18).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 19 -->
+            <div class="gallery-item delay-6 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (19).jpg', 'image')">
+                <img src="images (19).jpg" alt="images (19).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (19).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (19).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 20 -->
+            <div class="gallery-item delay-1 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (20).jpg', 'image')">
+                <img src="images (20).jpg" alt="images (20).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (20).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (20).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 21 -->
+            <div class="gallery-item delay-2 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (21).jpg', 'image')">
+                <img src="images (21).jpg" alt="images (21).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (21).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (21).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 23 -->
+            <div class="gallery-item delay-3 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (23).jpg', 'image')">
+                <img src="images (23).jpg" alt="images (23).jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="fallbackMedia(this, 'images (23).jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (23).jpg</span>
+                </div>
+            </div>
+
+            <!-- Élément 24 (Vidéo) -->
+            <div class="gallery-item delay-4 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (24).mp4', 'video')">
+                <video src="images (24).mp4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" muted loop autoplay playsinline></video>
+                <!-- Icône vidéo -->
+                <div class="absolute top-4 right-4 bg-black/60 p-2 rounded-full backdrop-blur-sm">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path></svg>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (24).mp4</span>
+                </div>
+            </div>
+
+            <!-- Élément 25 (Vidéo) -->
+            <div class="gallery-item delay-5 group relative aspect-square overflow-hidden rounded-2xl shadow-xl bg-gray-800 cursor-pointer" onclick="openMedia('images (25).mp4', 'video')">
+                <video src="images (25).mp4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" muted loop autoplay playsinline></video>
+                <!-- Icône vidéo -->
+                <div class="absolute top-4 right-4 bg-black/60 p-2 rounded-full backdrop-blur-sm">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path></svg>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-white font-medium text-lg border-b-2 border-yellow-500 pb-1">images (25).mp4</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modale / Lightbox combinée (Images et Vidéos) -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+        
+        <!-- Bouton fermer -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 z-50 text-gray-400 hover:text-white transition-colors p-2 bg-gray-900/50 rounded-full">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        
+        <!-- Conteneurs dynamiques pour l'affichage plein écran -->
+        <div id="media-container" class="relative max-w-full max-h-[85vh] flex items-center justify-center transform scale-95 transition-transform duration-300">
+            <!-- Image -->
+            <img id="lightbox-img" src="" alt="Média en plein écran" class="hidden max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+            <!-- Vidéo -->
+            <video id="lightbox-video" src="" controls class="hidden max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"></video>
+        </div>
+        
+        <!-- Titre sous le média dans la lightbox -->
+        <div id="lightbox-caption" class="mt-4 text-gray-300 text-lg font-medium tracking-wide"></div>
+    </div>
+
+    <!-- Scripts pour l'interactivité -->
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxVideo = document.getElementById('lightbox-video');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const mediaContainer = document.getElementById('media-container');
+
+        // Générer une image de remplacement en cas d'erreur de chargement
+        function fallbackMedia(imgElement, filename) {
+            imgElement.onerror = null;
+            imgElement.src = `https://placehold.co/800x800/1e293b/eab308?text=${encodeURIComponent(filename)}`;
+        }
+
+        // Ouvrir la Lightbox (gère images et vidéos)
+        function openMedia(src, type) {
+            lightboxCaption.textContent = src;
+            lightbox.classList.remove('hidden');
+
+            // Cacher les deux par défaut
+            lightboxImg.classList.add('hidden');
+            lightboxVideo.classList.add('hidden');
+            lightboxVideo.pause();
+
+            if (type === 'image') {
+                lightboxImg.src = src;
+                lightboxImg.classList.remove('hidden');
+                lightboxImg.onerror = function() { fallbackMedia(this, src); };
+            } else if (type === 'video') {
+                lightboxVideo.src = src;
+                lightboxVideo.classList.remove('hidden');
+                lightboxVideo.play(); // Lancer la vidéo automatiquement
+            }
+            
+            // Animation d'ouverture
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                mediaContainer.classList.remove('scale-95');
+                mediaContainer.classList.add('scale-100');
+            }, 10);
+            
+            // Empêcher le défilement
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fermer la Lightbox
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            mediaContainer.classList.remove('scale-100');
+            mediaContainer.classList.add('scale-95');
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxVideo.pause(); // Arrêter la vidéo
+                lightboxVideo.src = ""; // Libérer la mémoire
+                document.body.style.overflow = 'auto'; // Réactiver le défilement
+            }, 300);
+        }
+
+        // Fermer en cliquant à l'extérieur
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === mediaContainer) {
+                closeLightbox();
+            }
+        });
+
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
