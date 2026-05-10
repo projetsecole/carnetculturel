@@ -47,7 +47,13 @@
     </style>
 </head>
 <body class="text-white min-h-screen flex flex-col relative overflow-x-hidden selection:bg-pink-500 selection:text-white">
-
+    <!-- Bouton Retour à l'accueil -->
+    <a href="../index.html" class="absolute top-4 left-4 sm:top-6 sm:left-6 z-40 flex items-center gap-2 px-4 py-2 bg-gray-900/40 hover:bg-gray-900/80 backdrop-blur-md border border-white/10 rounded-full text-white transition-all duration-300 group shadow-lg">
+        <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        <span class="text-sm font-medium tracking-wider uppercase hidden sm:block">Accueil</span>
+    </a>
     <!-- Décoration d'arrière-plan (Taches de couleur floues) -->
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-40"></div>
